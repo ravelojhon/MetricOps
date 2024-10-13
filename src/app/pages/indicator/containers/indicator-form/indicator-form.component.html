@@ -1,0 +1,166 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="form()">
+      <div class="col-md-10 offset-md-1">
+        <div class="row">
+          <div class="space-between">
+            <h5>Indicators Form</h5>
+            <button mat-icon-button (click)="back()">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+          <hr />
+          <div class="col-md-12">
+            <div class="row">
+              <span class="required">Campos obligatorios (*)</span>
+              <div class="col-6 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'name' as nameField">
+                  <label for="name" class="form-label">
+                    Name *
+                    <input
+                      class="form-control"
+                      required
+                      type="text"
+                      formControlName="name" />
+                    <small
+                      class="alert"
+                      *ngIf="
+                        nameField.hasError('required') &&
+                        (nameField.dirty || nameField.touched)
+                      ">
+                      Name is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-6 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'type' as typeField">
+                  <label for="type" class="form-label">
+                    Type *
+                    <input
+                      class="form-control"
+                      required
+                      type="text"
+                      formControlName="type" />
+                    <small
+                      class="alert"
+                      *ngIf="
+                        typeField.hasError('required') &&
+                        (typeField.dirty || typeField.touched)
+                      ">
+                      Type is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-4 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'goal' as goalField">
+                  <label for="goal" class="form-label">Goal *
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="goal"
+                      (keypress)="validateFormat($event)"
+                      mask="separator"
+                      decimalMarker=","
+                      [leadZero]="true"
+                      thousandSeparator="." />
+                    <small
+                      class="alert"
+                      *ngIf="
+                        goalField.hasError('required') &&
+                        (goalField.dirty || goalField.touched)
+                      ">
+                      Goal is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-4 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'minimum' as minimumField">
+                  <label for="minimum" class="form-label">Minimum *
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="minimum"
+                      (keypress)="validateFormat($event)"
+                      mask="separator"
+                      decimalMarker=","
+                      [leadZero]="true"
+                      thousandSeparator="." />
+                    <small
+                      class="alert"
+                      *ngIf="
+                        minimumField.hasError('required') &&
+                        (minimumField.dirty || minimumField.touched)
+                      ">
+                      Minimum is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-4 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'maximum' as maximumField">
+                  <label for="maximum" class="form-label">Maximum *
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="maximum"
+                      (keypress)="validateFormat($event)"
+                      mask="separator"
+                      decimalMarker=","
+                      [leadZero]="true"
+                      thousandSeparator="." />
+                    <small
+                      class="alert"
+                      *ngIf="
+                        maximumField.hasError('required') &&
+                        (maximumField.dirty || maximumField.touched)
+                      ">
+                      Maximum is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-12 form-field-container">
+                <ng-container
+                  *ngIf="form() | formControl : 'description' as descriptionField">
+                  <label for="description" class="form-label">
+                    Description
+                    <textarea
+                      class="form-control"
+                      rows="3" cols="3"
+                      formControlName="description">
+                    </textarea>
+                    <small
+                      class="alert"
+                      *ngIf="
+                        descriptionField.hasError('required') &&
+                        (descriptionField.dirty || descriptionField.touched)
+                      ">
+                      Description is required.
+                    </small>
+                  </label>
+                </ng-container>
+              </div>
+              <div class="col-12">
+                <button
+                  class="save"
+                  mat-flat-button
+                  [disabled]="!form().valid"
+                  (click)="getInfoPerson()">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
