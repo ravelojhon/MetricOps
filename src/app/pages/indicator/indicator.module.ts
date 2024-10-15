@@ -8,6 +8,7 @@ import { EmptyRouteComponent } from '../../empty-route/empty-route.component';
 const routes: Routes = [
   { path: '', component: IndicatorListComponent },
   { path: 'form', component: IndicatorFormComponent, },
+  { path: 'form/:id', component: IndicatorFormComponent},
   { path: '**', component: EmptyRouteComponent },
 ];
 

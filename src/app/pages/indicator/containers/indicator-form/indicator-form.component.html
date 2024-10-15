@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <form [formGroup]="form()">
+    <form [formGroup]="form">
       <div class="col-md-10 offset-md-1">
         <div class="row">
           <div class="space-between">
@@ -15,7 +15,7 @@
               <span class="required">Campos obligatorios (*)</span>
               <div class="col-6 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'name' as nameField">
+                  *ngIf="form | formControl : 'name' as nameField">
                   <label for="name" class="form-label">
                     Name *
                     <input
@@ -36,7 +36,7 @@
               </div>
               <div class="col-6 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'type' as typeField">
+                  *ngIf="form | formControl : 'type' as typeField">
                   <label for="type" class="form-label">
                     Type *
                     <input
@@ -57,7 +57,7 @@
               </div>
               <div class="col-4 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'goal' as goalField">
+                  *ngIf="form | formControl : 'goal' as goalField">
                   <label for="goal" class="form-label">Goal *
                     <input
                       class="form-control"
@@ -81,7 +81,7 @@
               </div>
               <div class="col-4 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'minimum' as minimumField">
+                  *ngIf="form | formControl : 'minimum' as minimumField">
                   <label for="minimum" class="form-label">Minimum *
                     <input
                       class="form-control"
@@ -105,7 +105,7 @@
               </div>
               <div class="col-4 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'maximum' as maximumField">
+                  *ngIf="form | formControl : 'maximum' as maximumField">
                   <label for="maximum" class="form-label">Maximum *
                     <input
                       class="form-control"
@@ -129,7 +129,7 @@
               </div>
               <div class="col-12 form-field-container">
                 <ng-container
-                  *ngIf="form() | formControl : 'description' as descriptionField">
+                  *ngIf="form | formControl : 'description' as descriptionField">
                   <label for="description" class="form-label">
                     Description
                     <textarea
@@ -152,9 +152,9 @@
                 <button
                   class="save"
                   mat-flat-button
-                  [disabled]="!form().valid"
-                  (click)="getInfoPerson()">
-                  Save
+                  [disabled]="!form.valid"
+                  (click)="editForm ? putIndicator() : saveIndicator()">
+                  {{editForm ? "Edit" : "Save" }} 
                 </button>
               </div>
             </div>
